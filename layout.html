@@ -1,0 +1,96 @@
+<html>
+<style>
+    html {
+        font-family: system-ui, sans-serif;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    body {
+        font-size: 13px;
+        line-height: 1.6;
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 50px 0;
+    }
+
+    h2 {
+        border-bottom: 1px solid #ddd;
+    }
+
+    code {
+        padding: 1px;
+        background-color: #f9f9f9;
+        border: 1px solid #f0f0f0;
+    }
+
+    table,
+    th,
+    td,
+    tr {
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+        padding: 5px;
+        text-align: center;
+        font-family: monospace;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    th {
+        background-color: #f0f0f0;
+        font-size: 11px;
+        color: #383838;
+        font-weight: normal;
+    }
+
+    td.upp {
+        color: #1C2518;
+        background: #E9EFE6;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+
+    td.num {
+        color: #00243D;
+        background: #D6EEFF;
+    }
+
+    td.spe {
+        color: #34090F;
+        background: #FCEEF0;
+    }
+
+    .box {
+        border: 1px solid #ddd;
+        padding: 2px;
+    }
+
+    p.box {
+        min-height: 50px;
+    }
+</style>
+
+<body>
+    <h1>Printed credentials$paging</h1>
+    <h2>Account</h2>
+    <ul>
+        <li>Name: $($user.Name)</li>
+        <li>UserPrincipalName: $($user.UserPrincipalName)</li>
+        <li>SamAccountName: $($domain.NetBIOSName)\$($user.SamAccountName)</li>
+    </ul>
+    <h2>Password</h2>
+    <p>$pwdIntro<code>$_</code></p>
+    <h3>Password table</h3>
+    $passwordTable
+    <h3>Password information</h3>
+    <ul>
+        <li>Modified on: $($user.PasswordLastSet)</li>
+        <li>Modified by: $($env:USERDOMAIN)\$($env:USERNAME)</li>
+        <li>Must be changed before: $(($user.PasswordLastSet).AddYears(1))</li>
+    </ul>
+    <h2>Notes</h2>
+    <p class="box"></p>
+</body>
+
+</html>
